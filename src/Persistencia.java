@@ -11,7 +11,7 @@ import PersitFile.ReadWriteObject;
  */
 public class Persistencia {
 
-		
+	public static final String RUTA ="c:\\rms\\";	
 	public static void main(String[] args) throws ClassNotFoundException, IOException {
 		
 		System.out.println("--------------------------------------");
@@ -28,13 +28,13 @@ public class Persistencia {
 		
 		ReadWriteObject rwo = new ReadWriteObject();	
 		try {
-			rwo.WriteObject("c:\\rms\\personas.bin", false);
+			rwo.WriteObject(RUTA+"personas.bin", false);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		System.out.println("Recupero los objetos persona de un archivo");
 		try {
-			rwo.ReadObject("c:\\rms\\personas.bin");
+			rwo.ReadObject(RUTA+"personas.bin");
 		} catch (ClassNotFoundException | IOException e) {
 			e.printStackTrace();
 		}
@@ -52,9 +52,9 @@ public class Persistencia {
 		 }
 		GenericRWObject<Persona> grwo = new GenericRWObject<Persona>();			// Manejador
 		PintaLista(alp);														// Muestra el resultado 
-		grwo.SaveObjects( alp,"c:\\rms\\personasG.bin", false);					// Salva estructura
+		grwo.SaveObjects( alp,RUTA+"personasG.bin", false);					// Salva estructura
 		System.out.println("Recupero los objetos persona de un archivo");
-		ArrayList<Persona> alpr = grwo.RestoreObjects("c:\\rms\\personasG.bin");// Recupera estructura
+		ArrayList<Persona> alpr = grwo.RestoreObjects(RUTA+"personasG.bin");// Recupera estructura
 		PintaLista(alpr);														// Muestra el resultado	
 
 	}
